@@ -1,0 +1,13 @@
+
+  // IntelliJ API Decompiler stub source generated from a class file
+  // Implementation of methods is not available
+
+package com.presencecontrol.m2m.m2m_presencecontrol;
+
+public class TestDMGETPOSTIntentService extends android.app.Activity {
+    com.presencecontrol.m2m.m2m_presencecontrol.DMGETPOSTIntentService mServiceGETPOST;
+
+    public TestDMGETPOSTIntentService() { /* compiled code */ }
+
+    protected void onCreate(android.os.Bundle savedInstanceState) { /* compiled code */ }
+}

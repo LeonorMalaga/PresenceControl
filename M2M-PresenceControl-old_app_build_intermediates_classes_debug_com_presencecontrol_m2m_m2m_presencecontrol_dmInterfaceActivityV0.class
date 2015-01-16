@@ -1,0 +1,37 @@
+
+  // IntelliJ API Decompiler stub source generated from a class file
+  // Implementation of methods is not available
+
+package com.presencecontrol.m2m.m2m_presencecontrol;
+
+public class dmInterfaceActivityV0 extends android.support.v7.app.ActionBarActivity {
+    java.lang.String mlatitude;
+    java.lang.String mlongitude;
+    com.presencecontrol.m2m.m2m_presencecontrol.GPSTracker gps;
+
+    public dmInterfaceActivityV0() { /* compiled code */ }
+
+    protected void onCreate(android.os.Bundle savedInstanceState) { /* compiled code */ }
+
+    private java.lang.String readStream(java.io.InputStream is) { /* compiled code */ }
+
+    private java.lang.String inputStreamToString(java.io.InputStream is) { /* compiled code */ }
+
+    public boolean onCreateOptionsMenu(android.view.Menu menu) { /* compiled code */ }
+
+    public boolean onOptionsItemSelected(android.view.MenuItem item) { /* compiled code */ }
+
+    private class getDweetIO extends android.os.AsyncTask<java.lang.String,java.lang.Void,java.lang.String> {
+        java.net.URL url;
+
+        public getDweetIO(java.lang.String stringUrl) { /* compiled code */ }
+
+        protected java.lang.String doInBackground(java.lang.String... params) { /* compiled code */ }
+
+        protected void onPostExecute(java.lang.String result) { /* compiled code */ }
+
+        protected void onPreExecute() { /* compiled code */ }
+
+        protected void onProgressUpdate(java.lang.Void... values) { /* compiled code */ }
+    }
+}

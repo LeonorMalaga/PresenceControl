@@ -1,0 +1,5 @@
+/home/leonor/Desktop/Android/M2M-PresenceControl-old/app/build/intermediates/classes/debug
+/home/leonor/Desktop/Android/M2M-PresenceControl-old/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-77286b450018c765668e673a0baa91c48ed88e84.jar
+/home/leonor/Desktop/Android/M2M-PresenceControl-old/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-24fbf22e78137320944011c98de90dafc06b2055.jar
+/home/leonor/Desktop/Android/M2M-PresenceControl-old/app/build/intermediates/pre-dexed/debug/classes-e6cf6e5ebe6785e50f1f8f8d9a9b3e329293c121.jar
+/home/leonor/Desktop/Android/M2M-PresenceControl-old/app/build/intermediates/pre-dexed/debug/classes-a3b53008551b3b8d5f33c10fe164d1aa27d86ed0.jar

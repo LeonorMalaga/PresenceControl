@@ -1,0 +1,42 @@
+
+  // IntelliJ API Decompiler stub source generated from a class file
+  // Implementation of methods is not available
+
+package com.presencecontrol.m2m.m2m_presencecontrol;
+
+public class GPSTracker extends android.app.Service implements android.location.LocationListener {
+    private final android.content.Context mContext;
+    boolean isGPSEnabled;
+    boolean isNetworkEnabled;
+    boolean canGetLocation;
+    android.location.Location location;
+    double latitude;
+    double longitude;
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10L;
+    private static final long MIN_TIME_BW_UPDATES = 60000L;
+    protected android.location.LocationManager locationManager;
+
+    public GPSTracker(android.content.Context context) { /* compiled code */ }
+
+    public android.location.Location getLocation() { /* compiled code */ }
+
+    public void stopUsingGPS() { /* compiled code */ }
+
+    public double getLatitude() { /* compiled code */ }
+
+    public double getLongitude() { /* compiled code */ }
+
+    public boolean canGetLocation() { /* compiled code */ }
+
+    public void showSettingsAlert() { /* compiled code */ }
+
+    public void onLocationChanged(android.location.Location location) { /* compiled code */ }
+
+    public void onProviderDisabled(java.lang.String provider) { /* compiled code */ }
+
+    public void onProviderEnabled(java.lang.String provider) { /* compiled code */ }
+
+    public void onStatusChanged(java.lang.String provider, int status, android.os.Bundle extras) { /* compiled code */ }
+
+    public android.os.IBinder onBind(android.content.Intent arg0) { /* compiled code */ }
+}
