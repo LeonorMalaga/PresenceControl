@@ -1,0 +1,26 @@
+
+  // IntelliJ API Decompiler stub source generated from a class file
+  // Implementation of methods is not available
+
+package com.presencecontrol.m2m.m2m_presencecontrol;
+
+public class DMGETPOSTIntentService extends android.app.IntentService {
+    java.net.URL url;
+    java.lang.String getResponse;
+    java.lang.String postResponse;
+    private static final java.lang.String ACTION_GET = "com.presencecontrol.m2m.m2m_presencecontrol.action.GET";
+    private static final java.lang.String ACTION_POSTHEADER = "com.presencecontrol.m2m.m2m_presencecontrol.action.POSTHEADER";
+    private static final java.lang.String EXTRA_URL = "com.presencecontrol.m2m.m2m_presencecontrol.extra.url";
+
+    public static void startActionGET(android.content.Context context, java.lang.String stringUrl) { /* compiled code */ }
+
+    public static void startActionPOSTHEADER(android.content.Context context, java.lang.String stringUrl) { /* compiled code */ }
+
+    public DMGETPOSTIntentService() { /* compiled code */ }
+
+    protected void onHandleIntent(android.content.Intent intent) { /* compiled code */ }
+
+    private void handleActionGET(java.lang.String stringUrl) { /* compiled code */ }
+
+    private void handleActionPOSTHEADER(java.lang.String stringUrl) { /* compiled code */ }
+}

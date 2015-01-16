@@ -1,0 +1,16 @@
+
+  // IntelliJ API Decompiler stub source generated from a class file
+  // Implementation of methods is not available
+
+package com.presencecontrol.m2m.m2m_presencecontrol;
+
+public final class BuildConfig {
+    public static final boolean DEBUG;
+    public static final java.lang.String APPLICATION_ID = "com.presencecontrol.m2m.m2m_presencecontrol";
+    public static final java.lang.String BUILD_TYPE = "debug";
+    public static final java.lang.String FLAVOR = "";
+    public static final int VERSION_CODE = 1;
+    public static final java.lang.String VERSION_NAME = "1.0";
+
+    public BuildConfig() { /* compiled code */ }
+}

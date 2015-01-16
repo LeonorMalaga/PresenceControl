@@ -1,0 +1,10 @@
+
+  // IntelliJ API Decompiler stub source generated from a class file
+  // Implementation of methods is not available
+
+public class Constans {
+    public static final java.lang.String BROADCAST_ACTION = "com.example.android.threadsample.BROADCAST";
+    public static final java.lang.String EXTENDED_DATA_STATUS = "com.example.android.threadsample.STATUS";
+
+    public Constans() { /* compiled code */ }
+}
