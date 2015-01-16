@@ -3,6 +3,7 @@ package com.presencecontrol.m2m.m2m_presencecontrol;
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -111,6 +112,17 @@ public class DMGETPOSTIntentService extends IntentService {
             }
             getResponse= total.toString();
             Log.d("------------RESPUESTA----------", "------" + getResponse + "-----");
+                              /*
+     * Creates a new Intent containing a Uri object
+     * GETINTENTSERVICE_BROADCAST is a custom Intent action
+     * with the response of the get petition
+     */
+            Intent localIntent =
+                    new Intent(DMConstans.GETINTENTSERVICE_BROADCAST)
+                            // Puts the status into the Intent
+                            .putExtra(DMConstans.GETINTENTSERVICE_STATUS, getResponse);
+            // Broadcasts the Intent to receivers in this app.
+            LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -141,6 +153,17 @@ public class DMGETPOSTIntentService extends IntentService {
             }
             postResponse = total.toString();
             Log.d("----RESULTADO--------", "------" + postResponse + "-----");
+             /*
+     * Creates a new Intent containing a Uri object
+     * POSTHEADERINTENTSERVICE_BROADCAST is a custom Intent action
+     * with the response of the post petition
+     */
+            Intent localIntent =
+                    new Intent(DMConstans.POSTHEADERINTENTSERVICE_BROADCAST)
+                            // Puts the status into the Intent
+                            .putExtra(DMConstans.POSTHEADERINTENTSERVICE_STATUS, postResponse);
+            // Broadcasts the Intent to receivers in this app.
+            LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }catch (IOException e) {
