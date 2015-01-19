@@ -117,10 +117,9 @@ public class DMGETPOSTIntentService extends IntentService {
      * GETINTENTSERVICE_BROADCAST is a custom Intent action
      * with the response of the get petition
      */
-            Intent localIntent =
-                    new Intent(DMConstans.GETINTENTSERVICE_BROADCAST)
+            Intent localIntent =new Intent(DMConstants.INTENTSERVICE_BROADCAST_GET)
                             // Puts the status into the Intent
-                            .putExtra(DMConstans.GETINTENTSERVICE_STATUS, getResponse);
+                      .putExtra(DMConstants.INTENTSERVICE_EXTRA, getResponse);
             // Broadcasts the Intent to receivers in this app.
             LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
 
@@ -158,10 +157,9 @@ public class DMGETPOSTIntentService extends IntentService {
      * POSTHEADERINTENTSERVICE_BROADCAST is a custom Intent action
      * with the response of the post petition
      */
-            Intent localIntent =
-                    new Intent(DMConstans.POSTHEADERINTENTSERVICE_BROADCAST)
-                            // Puts the status into the Intent
-                            .putExtra(DMConstans.POSTHEADERINTENTSERVICE_STATUS, postResponse);
+            Intent localIntent =new Intent(DMConstants.INTENTSERVICE_BROADCAST_POSTHEADER)
+            // Puts the status into the Intent
+                   .putExtra(DMConstants.INTENTSERVICE_EXTRA,  postResponse);
             // Broadcasts the Intent to receivers in this app.
             LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
         } catch (MalformedURLException e) {
