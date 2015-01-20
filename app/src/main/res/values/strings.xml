@@ -16,4 +16,9 @@
     <string name="get_button">get from DM:</string>
     <string name="Data_send">Press to send data</string>
     <string name="Data_get">Press to get device storage dates</string>
+    <!--activity_first -->
+    <string name="first_text">It´s the first time you open this app. The storage structure should be build</string>
+    <string name="button_Fill_Proyect">Fill Proyect data</string>
+    <string name="button_Build">Build</string>
+    <string name="Build_result">Not Building</string>
 </resources>

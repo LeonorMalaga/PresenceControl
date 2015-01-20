@@ -1,20 +1,18 @@
-package com.presencecontrol.m2m.m2m_presencecontrol;
+package com.presencecontrol.m2m.m2m_presencecontrol.Activitys;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.widget.TextView;
-import android.net.Uri;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+
+import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
+import com.presencecontrol.m2m.m2m_presencecontrol.comunication.DMGETPOSTIntentService;
+import com.presencecontrol.m2m.m2m_presencecontrol.R;
 
 /**
  * Created by root on 14/01/15.

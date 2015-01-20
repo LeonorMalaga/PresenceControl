@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <TextView
+        android:id="@+id/first_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/first_text"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.06"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.18">
+
+        <Button
+            android:id="@+id/ProyectData_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_Fill_Proyect"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.06"
+            android:layout_below="@+id/first_textView"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/Build_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_Build"
+            android:layout_weight="0.06"
+            android:layout_below="@+id/first_textView"
+            android:layout_centerHorizontal="true"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="392dp"
+        android:layout_below="@+id/Build_button">
+
+        <TextView
+            android:id="@+id/build_result_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Build_result" />
+    </ScrollView>
+
+</LinearLayout>

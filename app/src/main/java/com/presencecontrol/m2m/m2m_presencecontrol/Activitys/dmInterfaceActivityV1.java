@@ -1,28 +1,32 @@
-package com.presencecontrol.m2m.m2m_presencecontrol;
+package com.presencecontrol.m2m.m2m_presencecontrol.Activitys;
 
-import android.support.v7.app.ActionBarActivity;
+import android.annotation.TargetApi;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.os.AsyncTask;
 import android.widget.TextView;
-import android.util.Log;
-import android.content.Context;
-import android.location.Location;
-import android.location.LocationManager;
-//java import
-import java.net.URL;
-import java.net.URLConnection;
+
+import com.presencecontrol.m2m.m2m_presencecontrol.R;
+import com.presencecontrol.m2m.m2m_presencecontrol.phoneSensor.GPSTracker;
+
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ByteArrayOutputStream;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
+//java import
 
 
-public class dmInterfaceActivityV0 extends ActionBarActivity {
+public class dmInterfaceActivityV1 extends ActionBarActivity {
     //atributtes
     String mlatitude="0";
     String mlongitude="0";
@@ -49,7 +53,7 @@ public class dmInterfaceActivityV0 extends ActionBarActivity {
         // mlongitude="3";
         Log.d("----------------------latitud y longitud y altitude------------------------------------------", mlatitude+" y "+mlongitude+"------------------------------------");
         //  String url="https://dweet.io:443/dweet/for/M2M_DM";
-       // String url="https://dweet.io:443/dweet/for/M2M_DM?latitude="+mlatitude+"&longitude="+mlongitude;
+      // String url="https://dweet.io:443/dweet/for/M2M_DM?latitude="+mlatitude+"&longitude="+mlongitude;
         EditText editUrl=(EditText) findViewById(R.id.default_ipport_editText);
         String urlaux= editUrl.getText().toString();
         EditText editDevice=(EditText) findViewById(R.id.default_device_editText);
@@ -58,11 +62,23 @@ public class dmInterfaceActivityV0 extends ActionBarActivity {
         String pailoadaux= editPaiload.getText().toString();
         Log.d("------urlaux-------------", urlaux+"------------------------------------");
         //new
-        String url="http://"+urlaux+"/new";
-        //add paiload
-        //String url="http://"+urlaux+"/post/"+deviceaux+"?"+pailoadaux+" -X POST";
-        Log.d("------url-------------", url+"------------------------------------");
-        new getDweetIO(url).execute();
+        //String url="http://"+urlaux+"/new";
+        //String charset="UTF-8";
+        //new getAsyncTask(url, charset).execute();
+       // add paiload
+        //String url="http://"+urlaux+"/post/?latitude="+mlatitude+"&longitude="+mlongitude;
+//        try {
+String url="http://"+urlaux+"/post/"+deviceaux+"/?prueba=1";
+//         String charset="UTF-8";
+//         String query = String.format("time=%s",
+//                        URLEncoder.encode("1234", charset));
+//         new postAsyncTask(url,charset,query).execute();
+//         Log.d("------url-------------", url+"------------------------------------");
+//        }catch(IOException e) {
+//            Log.d("---Error en post ---", e.getMessage());
+//        };
+
+        new postAsyncTask(url).execute();
     }
 
     private String readStream(InputStream is) {
@@ -97,12 +113,14 @@ public class dmInterfaceActivityV0 extends ActionBarActivity {
         return total.toString();
     }
 
-
-    private class getDweetIO extends AsyncTask<String, Void, String> {
+//----------------------------------------------------------------------GET-----------------------------------------------------------//
+    private class getAsyncTask extends AsyncTask<String, Void, String> {
         URL url;
-        public getDweetIO(String stringUrl) {
+        String charset;
+        public getAsyncTask(String stringUrl, String mcharset) {
             try {
                 url = new URL(stringUrl);
+                charset=mcharset;
                 Log.d("----------------------UrlOk------------------------------------------", "------------------------------------");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -114,6 +132,7 @@ public class dmInterfaceActivityV0 extends ActionBarActivity {
             try{
                 //url = new URL("https://dweet.io/dweet/for/M2M12345567789a?hello=world");
                 URLConnection urlConnection = url.openConnection();
+                urlConnection.setRequestProperty("Accept-Charset", charset);
                 Log.d("----------------------UrlConnectionOk------------------------------------------", "------------------------------------");
                 InputStream in0 = urlConnection.getInputStream();
                 Log.d("----------------------getInputStreamOk------------------------------------------", "------------------------------------");
@@ -139,23 +158,100 @@ public class dmInterfaceActivityV0 extends ActionBarActivity {
             }
             return result;
         }
-        @Override
-        protected void onPostExecute(String result) {
-            TextView t = (TextView) findViewById(R.id.respuestaSEND_textView);
-            if(result != null) {
-                t.setText(result);
-            }else if(result == ""){
-                t.setText("RESPONSE OK");
-            }else{
-                t.setText("TEST OK");
-            } }
-        @Override
-        protected void onPreExecute() {
-        }
-        @Override
-        protected void onProgressUpdate(Void... values) {
-        }
+
+    @Override
+    protected void onPostExecute(String result) {
+        TextView t = (TextView) findViewById(R.id.respuestaSEND_textView);
+        if(result != null) {
+               t.setText(result);
+        }else if(result == ""){
+            t.setText("RESPONSE OK");
+        }else{
+            t.setText("TEST OK");
+        } }
+    @Override
+    protected void onPreExecute() {
     }
+    @Override
+    protected void onProgressUpdate(Void... values) {
+    }
+}
+     //---------------------------------------------------------POST------------------------------------------------------------------------------------//
+     private class postAsyncTask extends AsyncTask<String, Void, String> {
+        URL url;
+//         String charset;
+//         String query;
+//         public postAsyncTask(String stringUrl,String mcharset,String mquery) {
+//             try {
+//                 url = new URL(stringUrl);
+//                 charset=mcharset;
+//                 query=mquery;
+//                 Log.d("----------------------UrlOk------------------------------------------", "------------------------------------");
+//             } catch (MalformedURLException e) {
+//                 e.printStackTrace();
+//             }
+//         }
+public postAsyncTask(String stringUrl) {
+             try {
+                 url = new URL(stringUrl);
+                 Log.d("----------------------UrlOk------------------------------------------", "------------------------------------");
+             } catch (MalformedURLException e) {
+                 e.printStackTrace();
+             }
+         }
+         @TargetApi(Build.VERSION_CODES.KITKAT)
+         @Override
+         protected String doInBackground(String... params) {
+             String result="Server not response";
+             try{
+                 //url = new URL("https://dweet.io/dweet/for/M2M12345567789a?hello=world");
+                 URLConnection urlConnection = url.openConnection();
+                  Log.d("----------------------UrlConnectionOk------------------------------------------", "------------------------------------");
+                 urlConnection.setDoOutput(true);
+                 Log.d("------set-----POST----","true");
+                 InputStream in0 = urlConnection.getInputStream();
+                 Log.d("----------------------getInputStreamOk------------------------------------------", "------------------------------------");
+                 InputStreamReader in = new InputStreamReader(in0);
+                 Log.d("----------------------getInputStreanReaderOk------------------------------------------", "------------------------------------");
+                 BufferedReader rd = new BufferedReader(in);
+                 Log.d("----------------------BufferedOk------------------------------------------", "------------------------------------");
+                 String line;
+                 StringBuilder total = new StringBuilder();
+                 try {
+                     while ((line = rd.readLine()) != null)
+                         total.append(line);            } catch (IOException e) {
+                     e.printStackTrace();
+                 }
+                 result = total.toString();
+                 Log.d("-------------------------StringOk---------------------------------------", "------------------------------------");
+                 Log.d("respuesta de https://dweet.io:443/dweet/for/M2M_DM/", "------" + result + "-----");
+
+             } catch (MalformedURLException e) {
+                 Log.d("---Error make URL---https://dweet.io:443/dweet/for/M2M_DM/", e.getMessage());
+             } catch (IOException e) {
+                 Log.d("---Error IOException", e.getMessage());
+             }
+             return result;
+         }
+         @Override
+         protected void onPostExecute(String result) {
+             TextView t = (TextView) findViewById(R.id.respuestaSEND_textView);
+             if(result != null) {
+                   t.setText(result);
+             }else if(result == ""){
+                 t.setText("RESPONSE OK");
+             }else{
+                 t.setText("TEST OK");
+             } }
+         @Override
+         protected void onPreExecute() {
+         }
+         @Override
+         protected void onProgressUpdate(Void... values) {
+         }
+     }
+
+
 
 
     @Override

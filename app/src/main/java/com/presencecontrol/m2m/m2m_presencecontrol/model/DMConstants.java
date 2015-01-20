@@ -1,4 +1,4 @@
-package com.presencecontrol.m2m.m2m_presencecontrol;
+package com.presencecontrol.m2m.m2m_presencecontrol.model;
 
 /**
  * Created by root on 16/01/15.

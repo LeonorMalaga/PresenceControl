@@ -1,10 +1,12 @@
-package com.presencecontrol.m2m.m2m_presencecontrol;
+package com.presencecontrol.m2m.m2m_presencecontrol.comunication;
 
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.Context;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+
+import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
 
 import java.io.BufferedReader;
 import java.io.IOException;

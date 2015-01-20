@@ -1,4 +1,4 @@
-package com.presencecontrol.m2m.m2m_presencecontrol;
+package com.presencecontrol.m2m.m2m_presencecontrol.phoneSensor;
 
 /**
  * Created by root on 7/01/15.
