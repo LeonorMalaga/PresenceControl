@@ -1,10 +1,13 @@
 package com.presencecontrol.m2m.m2m_presencecontrol.model;
 
+import android.content.Context;
+import android.preference.PreferenceManager;
 /**
  *Created by LeonorMartinezMesas@gmail.com on 04/01/2015.
  * class to save the settings configurations
+ * The database Structure, has to be bouilding que fest time that the app is used
  */
-public class SettingsModel {
+public class SettingsModel{
     //atributes
     public enum SaveMode{SERVER,LOCAL,BOTH};
     public enum AppMode{INSTALLER, USER};
@@ -12,19 +15,23 @@ public class SettingsModel {
     private SaveMode saveMode;
     private String getUrl;
     private String postheaderUrl;
+    private String mdate;
 
-    public SettingsModel() {
+    public SettingsModel(Context context) {
         this.appMode =AppMode.USER;
         this.saveMode =SaveMode.LOCAL;
         this.getUrl="http://192.168.1.103:8080/get/";
         this.postheaderUrl="http://192.168.1.103:8080/post/";
+        this.mdate =String.valueOf(System.currentTimeMillis());
+
     }
 
-    public SettingsModel(SaveMode saveMode,AppMode appMode,String getUrl, String postheaderUrl) {
+    public SettingsModel(Context context,SaveMode saveMode,AppMode appMode,String getUrl, String postheaderUrl) {
         this.appMode =appMode;
         this.saveMode = saveMode;
         this.getUrl = getUrl;
         this.postheaderUrl = postheaderUrl;
+        this.mdate =String.valueOf(System.currentTimeMillis());
     }
 
     public AppMode getAppMode() {

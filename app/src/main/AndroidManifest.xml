@@ -25,18 +25,19 @@
             android:name=".Activitys.dmInterfaceActivityV1"
             android:label="@string/app_name" >
         </activity>
-
         <activity
             android:name=".Activitys.TestDMGETPOSTIntentService"
             android:label="@string/app_name" >
         </activity>
-
         <activity
-            android:name=".Activitys.FirstActivity"
+            android:name=".Activitys.FirstActivity_old"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.presencecontrol.m2m.m2m_presencecontrol.Activitys.FirstActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -45,6 +46,11 @@
             android:name=".comunication.DMGETPOSTIntentService"
             android:exported="false" >
         </service>
+
+        <activity
+            android:name=".Activitys.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
 
 </manifest>

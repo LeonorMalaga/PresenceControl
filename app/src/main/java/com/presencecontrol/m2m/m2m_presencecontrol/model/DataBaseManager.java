@@ -16,17 +16,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
-
-
-////Internal import
+import android.content.ContentValues;
+import android.widget.Toast;
+//Internal import
 
 /**
- * Created by M2M_Ericcson on 03/11/2014.
+ * Created by Leonormartinezmesas@gmail.com, tlf 667442487
  * this class is used to buil the persistence
+ * The mosth importal methods are:
+ * *makeTable(Class<T> klazz)->Make tables from a class, every attribute make a column. If the class contains attributes of  arrays type.
+ * *It will build a asociation table , name className_attributeName, columns:(id(INTEGER),classNameId(INTEGER),attributeName(INTEGER))
+ * *and the column name will be className_attributeNameId
+ * ***************************************************
+ *public <T> String getLastvalue(Class<T> klazz, String column)-> Get the last value of a column
+ * public <T> void insertValues(Class<T> klazz,ContentValues values) -> Add a row to in the table that represent class.if the table not exist. we make it
  */
 public class DataBaseManager extends SQLiteOpenHelper {
     //Atributtes
     public String tableName = "prueba";
+    Context myContext;
     // All Static variables
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -35,12 +43,14 @@ public class DataBaseManager extends SQLiteOpenHelper {
 
     // Constructor Make database
     public DataBaseManager(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        myContext=context;
     }
 
     public DataBaseManager(Context context, String tableName) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.tableName = tableName;
+        myContext=context;
     }
 
     //Default Operation
@@ -190,9 +200,7 @@ public class DataBaseManager extends SQLiteOpenHelper {
         }
 
     }
-    //relleno la primera linea de la tabla, para poder obtener con una query las columnas que se an creado
-
-    /**
+     /**
      * List the existing tables that implement the storage model of the give class
      */
     public <T> String showTables(Class<T> klazz) {
@@ -250,7 +258,68 @@ public class DataBaseManager extends SQLiteOpenHelper {
         }
 
     }
+    /**
+     * Add a row to in the table that represent class
+     * if the table not exist. we make it
+     */
+    public <T> void insertValues(Class<T> klazz,ContentValues values) {
+        String path = klazz.getName();
+        StringTokenizer st = new StringTokenizer(path, ".");
+        List<String> pathList = new ArrayList();
+        while (st.hasMoreTokens()) {
+            pathList.add(st.nextToken());
+        }
+        int index = pathList.size() - 1;
+        String name = pathList.get(index);
+        if(!this.insertValues(name,values)){
+            //if the row not be make, we try one time more
+            this.makeTable(klazz);
+            if(!this.insertValues(name,values)){
+                Toast.makeText(myContext, "ERROR, SAVING DATA", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
+    /**
+     * Add a row to the give table, with the give values
+     */
+    public boolean insertValues(String table,ContentValues values) {
+        boolean re=true;
+        Log.d("----Inseting a new row in --------", table);
+        SQLiteDatabase db = null;
+           db = this.getWritableDatabase();
+           long cod =db.insert(table,null, values);
+           db.close();
+        if (cod==-1)
+            re=false;
+        return re;
+    }
+
+    /*Get the last value of a column*/
+    public <T> String getLastvalue(Class<T> klazz, String column){
+        String path = klazz.getName();
+        StringTokenizer st = new StringTokenizer(path, ".");
+        List<String> pathList = new ArrayList();
+        while (st.hasMoreTokens()) {
+            pathList.add(st.nextToken());
+        }
+        int index = pathList.size() - 1;
+        String name = pathList.get(index);
+        return getLastvalue(name,column);
+    }
+
+/*Get the last value of a column*/
+    public String getLastvalue(String table, String column){
+    String str = null;
+    String selectQuery= "SELECT * FROM " + table+" ORDER BY column DESC LIMIT 1";
+    SQLiteDatabase db = this.getWritableDatabase();
+    Cursor cursor = db.rawQuery(selectQuery, null);
+    if(cursor.moveToFirst())
+    str  =  cursor.getString( cursor.getColumnIndex(column));
+    cursor.close();
+    db.close();
+    return str;
+    }
     //delete a table
     public void deleteTable(String table) {
         SQLiteDatabase db = null;

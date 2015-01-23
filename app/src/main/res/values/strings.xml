@@ -16,9 +16,17 @@
     <string name="get_button">get from DM:</string>
     <string name="Data_send">Press to send data</string>
     <string name="Data_get">Press to get device storage dates</string>
-    <!--activity_first -->
+    <!--activity_first_old -->
     <string name="first_text">It´s the first time you open this app. The storage structure should be build</string>
     <string name="button_Fill_Proyect">Fill Proyect data</string>
     <string name="button_Build">Build</string>
     <string name="Build_result">Not Building</string>
+    <!--activity_first -->
+    <string name="button_Start">Start with default values</string>
+    <string name="start_text">It´s the first time you open this app. You should change the setting.
+                              \nMode:
+                              \n 1-work like a installer(detect beacon and save associate text).(default)
+                               \n 2-o like a user(hear the associate text from a beacon wen you are near).
+                               \n Also you can configure the storage mode: Local(default) or by external server.
+                               \n If we select external server, we have to set the url to send data(by http post method) and receive data(by http get method)</string>
 </resources>
