@@ -338,8 +338,8 @@ public class DataBaseManager extends SQLiteOpenHelper {
     /**
      * Add a Table with the Colums definit in the ArrayList,
      *
-     * @param the   name of the table and a ArrayList
-     * @param Every element of the ArrayList has three Strings: the colum Name, the type of the value ejm:(INTEGER, TEXT,..)and the default value
+     * @param name the name of the table and a ArrayList
+     * @param columns every element of the ArrayList has three Strings: the colum Name, the type of the value ejm:(INTEGER, TEXT,..)and the default value
      */
     public void makeTable(String name, ArrayList<AuxTableScreme> columns) {
         SQLiteDatabase db = null;
@@ -361,8 +361,8 @@ public class DataBaseManager extends SQLiteOpenHelper {
     /**
      * Add a Table with the Colums definit in the ArrayList,
      *
-     * @param the   name of the table and a ArrayList
-     * @param Every element of the ArrayList has three Strings: the colum Name, the type of the value ejm:(INTEGER, TEXT,..)and the default value
+     * @param name the name of the table and a ArrayList
+     * @param columns Every element of the ArrayList has three Strings: the colum Name, the type of the value ejm:(INTEGER, TEXT,..)and the default value
      *              If the name of the colum finix with "Id", this method make the column value unique
      */
     public void makeTableFilteringId(String name, ArrayList<AuxTableScreme> columns) {
@@ -416,7 +416,8 @@ public class DataBaseManager extends SQLiteOpenHelper {
     /**
      * Add a Colum to a give table
      *
-     * @param four Strings, the Table name, the colum Name, the type of the value ejme(INTEGER, TEXT,..),the default value
+     * @param tablename the Table name
+     * @param columName the colum Name, the type of the value ejme(INTEGER, TEXT,..),the default value
      *             If the name of the colum finix with "Id", this method make the column value unique
      */
     public void addColumFilteringId(String tablename, String columName, String type, String value) {
@@ -430,7 +431,6 @@ public class DataBaseManager extends SQLiteOpenHelper {
                 db.execSQL("ALTER TABLE " + tablename + " ADD " + columName + " " + type + " DEFAULT " + value);
                 Log.d("---Colum adding to:--", columName + "--type-- " + type + "--with-default-value--" + value + "------");
             }
-
             db.close();
         } catch (Exception e) {
             Log.e("---Add Colum Exception-----", e.getMessage().toString() + "-------------------------------");
@@ -439,11 +439,10 @@ public class DataBaseManager extends SQLiteOpenHelper {
     }
 
 // delete a column
-
     /**
      * Add a Colum to a give table
      *
-     * @param four Strings, the Table name, the colum Name, the type of the value ejme(INTEGER, TEXT,..),the default value
+     * @param tablename four Strings, the Table name, the colum Name, the type of the value ejme(INTEGER, TEXT,..),the default value
      */
     public void addColum(String tablename, String columName, String type, String value) {
         SQLiteDatabase db = null;
@@ -457,7 +456,6 @@ public class DataBaseManager extends SQLiteOpenHelper {
             db.close();
         }
     }
-
 
     /**
      * This method returns a ArrayList<AuxTableScreme>
@@ -500,5 +498,4 @@ public class DataBaseManager extends SQLiteOpenHelper {
             return null;
         }
     }
-
 }

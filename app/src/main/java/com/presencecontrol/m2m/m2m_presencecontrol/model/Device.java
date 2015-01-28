@@ -10,29 +10,70 @@ import java.util.List;
  * identificate by the bluettoth adress(with ejem:<Adress>:AE1234CD,<device_name>:"LUIS", <RSSI>:"-51dBm")
  */
 public class Device implements Serializable {
+    private int _id;
+    private int projecto_id;
     private String mdate = null;//The date at which the class is generate
-    private String mDeviceId = null;// lE1234CD
+    private String mDeviceAddress = null;// lE1234CD
     private String mDeviceName = null;//"LUIS"
     private String latitude=null;
     private String longitude=null;
     private String mDeviceSpecification = null;//message to show
-    private List<Payload> mPayloadList = new LinkedList<Payload>();//List of measures values with his date and type(dBm) of value(-51)
+//    private List<Payload> mPayloadList = new LinkedList<Payload>();//List of measures values with his date and type(dBm) of value(-51)
+
+    @Override
+    public String toString() {
+        return "Name:"+mDeviceName+" address:"+mDeviceAddress+" latitude:"+latitude+" longitude:"+longitude;
+    }
+
     /**
      * Constructor
      */
-    public Device(String mDeviceId, String latitude, String longitude) {
-        this.mDeviceId = mDeviceId;
+    public Device(){}
+
+    public Device(String mDeviceAddress, String latitude, String longitude) {
+        this.mDeviceAddress = mDeviceAddress;
         this.mDeviceName="Anonymous";
         this.latitude=latitude;
         this.longitude=longitude;
         this.mdate = String.valueOf(System.currentTimeMillis());
     }
-    public Device(String mDeviceId, String latitude, String longitude,String mDeviceName) {
-        this.mDeviceId = mDeviceId;
+    public Device(String mDeviceAddress, String latitude, String longitude,String mDeviceName) {
+        this.mDeviceAddress = mDeviceAddress;
         this.mDeviceName=mDeviceName;
         this.latitude=latitude;
         this.longitude=longitude;
         this.mdate = String.valueOf(System.currentTimeMillis());
+    }
+    public Device(int idprojecto, String mDeviceAddress, String latitude, String longitude) {
+        this.mDeviceAddress = mDeviceAddress;
+        this.mDeviceName="Anonymous";
+        this.latitude=latitude;
+        this.longitude=longitude;
+        this.mdate = String.valueOf(System.currentTimeMillis());
+    }
+    public Device(int idprojecto, String mDeviceAddress, String latitude, String longitude,String mDeviceName) {
+        this.mDeviceAddress = mDeviceAddress;
+        this.mDeviceName=mDeviceName;
+        this.latitude=latitude;
+        this.longitude=longitude;
+        this.mdate = String.valueOf(System.currentTimeMillis());
+    }
+
+    /**GETTER-SETTER*/
+    public int getprojecto_id() {
+        return projecto_id;
+    }
+
+    public void setprojecto_id(int projecto_id) {
+        this.projecto_id = projecto_id;
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
     public String getLatitude() {
@@ -51,8 +92,8 @@ public class Device implements Serializable {
         this.longitude = longitude;
     }
 
-    public Device(String mDeviceId, String latitude, String longitude,String mDeviceName, String mDeviceSpecification) {
-        this.mDeviceId = mDeviceId;
+    public Device(String mDeviceAddress, String latitude, String longitude,String mDeviceName, String mDeviceSpecification) {
+        this.mDeviceAddress = mDeviceAddress;
         this.mDeviceName=mDeviceName;
         this.latitude=latitude;
         this.longitude=longitude;
@@ -63,9 +104,9 @@ public class Device implements Serializable {
      * Metod
      * /
      /**GETTER-SETTER
-     *  I build all getter and setter, except set mDeviceId,because,it is the identifier
-     * public void setmDeviceId(String mDeviceId) {
-     *this.mDeviceId = mDeviceId;
+     *  I build all getter and setter, except set mDeviceAddress,because,it is the identifier
+     * public void setmDeviceAddress(String mDeviceAddress) {
+     *this.mDeviceAddress = mDeviceAddress;
      *}
      */
     public String getDate() {
@@ -76,7 +117,7 @@ public class Device implements Serializable {
         this.mdate = mdate;
     }
     public String getDeviceId() {
-        return mDeviceId;
+        return mDeviceAddress;
     }
 
     public String getDeviceSpecification() {
@@ -87,26 +128,41 @@ public class Device implements Serializable {
         this.mDeviceSpecification = mDeviceSpecification;
     }
 
-    public List<Payload> getPayloadList() {
-        return mPayloadList;
+    public String getmDeviceName() {
+        return mDeviceName;
     }
 
-    public void setPayloadList(List<Payload> mPayloadList) {
-        this.mPayloadList = mPayloadList;
+    public void setmDeviceName(String mDeviceName) {
+        this.mDeviceName = mDeviceName;
     }
+
+    public String getmDeviceAddress() {
+        return mDeviceAddress;
+    }
+
+    public void setmDeviceAddress(String mDeviceAddress) {
+        this.mDeviceAddress = mDeviceAddress;
+    }
+//
+//    public List<Payload> getPayloadList() {
+//        return mPayloadList;
+//    }
+//
+//    public void setPayloadList(List<Payload> mPayloadList) {
+//        this.mPayloadList = mPayloadList;
+//    }
     /*
 *OTHER
 */
-    public void addPayload(Payload payload) {
-        mPayloadList.add(payload);
-    }
-    public Payload getPayload(int i) {
-        return mPayloadList.get(i);
-    }
-    public int getPayloadListSize(){
-        return mPayloadList.size();
-    }
-
+//    public void addPayload(Payload payload) {
+//        mPayloadList.add(payload);
+//    }
+//    public Payload getPayload(int i) {
+//        return mPayloadList.get(i);
+//    }
+//    public int getPayloadListSize(){
+//        return mPayloadList.size();
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -115,13 +171,13 @@ public class Device implements Serializable {
 
         Device device = (Device) o;
 
-        if (!mDeviceId.equals(device.mDeviceId)) return false;
+        if (!mDeviceAddress.equals(device.mDeviceAddress)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return mDeviceId.hashCode();
+        return mDeviceAddress.hashCode();
     }
 }

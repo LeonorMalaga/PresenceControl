@@ -3,21 +3,37 @@ package com.presencecontrol.m2m.m2m_presencecontrol.model;
 import java.io.Serializable;
 
 /**
- * Created by M2M_Ericcson on 24/10/2014.
- * This class represent resource value with his date and type of value
- * Ejem for gps sensor latitude: -34,5 type Integer at date:24/10/2014
+ * Created by Leonor Martinez Mesas on 24/10/2014.
  */
 public class Payload implements Serializable {
+    private int _id;
+    private int device_id;
     private String mdate = null;//The date at which the value was obtained
     private String mtype = null;//type of value, example Integer, double, String, Long ..ect
     private String mvalue = null;//The value collected by the sensor
     /**
      * Constructor
      */
+    public Payload(){
+
+    }
+
     public Payload( String type, String value) {
         this.mdate =String.valueOf(System.currentTimeMillis());
         this.mtype = type;
         this.mvalue = value;
+    }
+    public Payload( String type, String value, int device_id) {
+        this.mdate =String.valueOf(System.currentTimeMillis());
+        this.mtype = type;
+        this.mvalue = value;
+        this.device_id=device_id;
+    }
+    public Payload(String date, String type, String value,int device_id) {
+        this.mdate = date;
+        this.mtype = type;
+        this.mvalue = value;
+        this.device_id=device_id;
     }
     public Payload(String date, String type, String value) {
         this.mdate = date;
@@ -25,12 +41,17 @@ public class Payload implements Serializable {
         this.mvalue = value;
     }
 
-    /**
-     * Metod
-     */
     /**GETTER-SETTER
      *This object can´t change after it was created, y will implement only getter
      */
+    public int getdevice_id() {
+        return device_id;
+    }
+
+    public void setdevice_id(int device_id) {
+        this.device_id = device_id;
+    }
+
     public String getDate() {
         return mdate;
     }
@@ -41,6 +62,26 @@ public class Payload implements Serializable {
 
     public String getValue() {
         return mvalue;
+    }
+
+    public void setMdate(String mdate) {
+        this.mdate = mdate;
+    }
+
+    public void setMtype(String mtype) {
+        this.mtype = mtype;
+    }
+
+    public void setMvalue(String mvalue) {
+        this.mvalue = mvalue;
+    }
+
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
     /*
   *OTHER

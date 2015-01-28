@@ -6,7 +6,28 @@
         android:summary="@string/pref_description_social_recommendations"
         android:defaultValue="true" />
 
-    <!- NOTE: EditTextPreference accepts EditText attributes. -->
+
+    <!- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+         dismiss it. -->
+    <!-- NOTE: ListPreference's summary should be set to its value by the activity code-->
+    <ListPreference
+        android:key="work_mode_list"
+        android:title="@string/pref_work_mode"
+        android:defaultValue="1"
+        android:entries="@array/pref_work_mode_list_titles"
+        android:entryValues="@array/pref_work_mode_list_values"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+    <ListPreference
+        android:key="work_save_list"
+        android:title="@string/pref_save_mode"
+        android:defaultValue="1"
+        android:entries="@array/pref_work_save_list_titles"
+        android:entryValues="@array/pref_work_save_list_values"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <EditTextPreference
         android:key="getUrl"
@@ -27,16 +48,5 @@
         android:capitalize="words"
         android:singleLine="true"
         android:maxLines="1" />
-    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
-         dismiss it. -->
-    <!-- NOTE: ListPreference's summary should be set to its value by the activity code.
-    <ListPreference
-        android:key="example_list"
-        android:title="@string/pref_title_add_friends_to_messages"
-        android:defaultValue="-1"
-        android:entries="@array/pref_example_list_titles"
-        android:entryValues="@array/pref_example_list_values"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null" /> -->
 
 </PreferenceScreen>
