@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,8 @@ public class ProjectDAO {
             MySQLiteHelper.COLUMN_PROJECT_NAME,
             MySQLiteHelper.COLUMN_PROJECT_SPECIFICATION
     };
-    
+    private android.util.Log Lod;
+
     private Project cursorTo(Cursor cursor) {
         Project project = new Project();
         project.set_id(cursor.getInt(0));
@@ -44,12 +46,12 @@ public class ProjectDAO {
     }
 
     public int create(Project project) {
+        int insertId=-1;
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_DATE, project.getDate());
         values.put(MySQLiteHelper.COLUMN_PROJECT_NAME, project.getmprojectName());
         values.put(MySQLiteHelper.COLUMN_PROJECT_SPECIFICATION, project.getprojectSpecification());
-
-        int insertId = (int) database.insert(MySQLiteHelper.TABLE_PROJECTS, null, values);
+        insertId = (int) database.insert(MySQLiteHelper.TABLE_PROJECTS, null, values);
         return insertId;
     }
 

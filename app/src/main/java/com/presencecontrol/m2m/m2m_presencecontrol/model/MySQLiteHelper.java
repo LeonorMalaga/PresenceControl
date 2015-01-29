@@ -47,6 +47,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DEVICE_ADDRESS= "address";
     public static final String COLUMN_DEVICE_NAME = "device_name";
     public static final String COLUMN_DEVICE_ESPECIFICATION = "device_specification";
+    public static final String COLUMN_MAX_RSSI= "max_rssi";
     public static final String COLUMN_LATITUDE= "latitude";
     public static final String COLUMN_LONGITUDE= "longitude";
 
@@ -78,6 +79,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_DEVICE_ADDRESS+ " text not null unique, "
             + COLUMN_DEVICE_NAME + " text, "
             + COLUMN_DEVICE_ESPECIFICATION + " text, "
+            + COLUMN_MAX_RSSI+ " text, "
             + COLUMN_LATITUDE+ " text, "
             + COLUMN_LONGITUDE+ " text); "
             ;
@@ -86,10 +88,17 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + TABLE_PROJECTS + " ( "
             + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_DATE+ " text not null, "
-            + COLUMN_PROJECT_NAME+ " text not null unique, "
+            + COLUMN_PROJECT_NAME+ " text not null, "
             + COLUMN_PROJECT_SPECIFICATION + " text); "
             ;
-
+//Unique give problem
+//    private static final String DATABASE_CREATE_PROJECTS = "create table if not exists "
+//            + TABLE_PROJECTS + " ( "
+//            + COLUMN_ID + " integer primary key autoincrement, "
+//            + COLUMN_DATE+ " text not null, "
+//            + COLUMN_PROJECT_NAME+ " text not null unique, "
+//            + COLUMN_PROJECT_SPECIFICATION + " text); "
+//            ;
 //    /*
 //    * relational tables
 //    */
@@ -108,7 +117,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 //            + COLUMN_PROJECT_ID + " integer not null, "
 //            + COLUMN_DEVICE_ID + " integer not null); "
 //            ;
-
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

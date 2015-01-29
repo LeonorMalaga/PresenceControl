@@ -16,43 +16,53 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.presencecontrol.m2m.m2m_presencecontrol.R;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.AuxTableScreme;
+import com.presencecontrol.m2m.m2m_presencecontrol.model.MySQLiteHelper;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.DataBaseManager;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.Device;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.Payload;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.SettingsModel;
+
 
 import java.util.ArrayList;
 
 /**
- * Created by root on 21/01/15.
+ * Created by leonor martinez mesas on 21/01/15.
  */
 public class FirstActivity extends ActionBarActivity {
     private static final int RESULT_SETTINGS = 1;
     //attributes
     int first;
     private Button startDefaultButton;
+    MySQLiteHelper Database;
+    String workMode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         //showUserSettings();
         first= PreferenceManager.getDefaultSharedPreferences(FirstActivity.this).getInt(DMConstants.FIRST,0);
-        /*if(first==178456239){
+        Log.d("--------------FIRST----------: ", String.valueOf(first));
+        if(first==268456239){
             //Itś not the first time, look the work mode and jump to the correct activity
-
+            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            workMode=sharedPrefs.getString(DMConstants.WORKMODE, "NULL");
+            Log.d("------------NOT FIRST--WOORK MODE----------: ",workMode);
 
         }else{
+            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            workMode=sharedPrefs.getString(DMConstants.WORKMODE, "NULL");
+            Log.d("-------------FIRST-WOORK MODE----------: ",workMode);
+            Database=new MySQLiteHelper(getApplicationContext());
             startDefaultButton=(Button)this.findViewById(R.id.startDefault_button);
             startDefaultButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick (View view){
-                    // startActivity(new Intent(FirstActivity.this, SecondActivity.class));
+                  startActivity(new Intent(getApplicationContext(), FirstInstallerActivity.class));
                 }
             });
 
-        }*/
+            PreferenceManager.getDefaultSharedPreferences(FirstActivity.this)
+                    .edit()
+                    .putInt(DMConstants.FIRST,168456239)
+                    .commit();
+        }
 
 }
     @Override
@@ -65,14 +75,11 @@ public class FirstActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
             case R.id.action_settings:
                 Intent i = new Intent(this, SettingsActivity.class);
                 startActivityForResult(i, RESULT_SETTINGS);
                 break;
-
         }
-
         return true;
     }
     @Override
@@ -83,9 +90,7 @@ public class FirstActivity extends ActionBarActivity {
             case RESULT_SETTINGS:
                 //showUserSettings();
                 break;
-
         }
-
     }
 
  //----------------------------------------------------------------Methods-------------------------//

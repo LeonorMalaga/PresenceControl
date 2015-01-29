@@ -56,13 +56,14 @@ public class PayloadDAO {
     If you create a payload, also will change the relational database DEVICE_PAYLOAD
      */
     public int create(Payload payload) {
+        int insertId=-1;
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_DEVICE_ID, payload.getdevice_id());
         values.put(MySQLiteHelper.COLUMN_DATE, payload.getDate());
         values.put(MySQLiteHelper.COLUMN_TYPE, payload.getType());
         values.put(MySQLiteHelper.COLUMN_VALUE, payload.getValue());
 
-        int insertId = (int) database.insert(MySQLiteHelper.TABLE_PAYLOAD, null, values);
+        insertId = (int) database.insert(MySQLiteHelper.TABLE_PAYLOAD, null, values);
 //        ContentValues valuesRelational = new ContentValues();
 //        values.put(MySQLiteHelper.COLUMN_DATE, payload.getDate());
 ////        values.put(MySQLiteHelper.COLUMN_ID_PAYLOAD, insertId);

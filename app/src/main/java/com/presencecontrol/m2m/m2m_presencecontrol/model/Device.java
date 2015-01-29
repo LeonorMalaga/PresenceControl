@@ -17,6 +17,7 @@ public class Device implements Serializable {
     private String mDeviceName = null;//"LUIS"
     private String latitude=null;
     private String longitude=null;
+    private String maxRSSI=null;
     private String mDeviceSpecification = null;//message to show
 //    private List<Payload> mPayloadList = new LinkedList<Payload>();//List of measures values with his date and type(dBm) of value(-51)
 
@@ -37,6 +38,7 @@ public class Device implements Serializable {
         this.longitude=longitude;
         this.mdate = String.valueOf(System.currentTimeMillis());
     }
+
     public Device(String mDeviceAddress, String latitude, String longitude,String mDeviceName) {
         this.mDeviceAddress = mDeviceAddress;
         this.mDeviceName=mDeviceName;
@@ -44,14 +46,28 @@ public class Device implements Serializable {
         this.longitude=longitude;
         this.mdate = String.valueOf(System.currentTimeMillis());
     }
+
+    public Device(int idprojecto,String mDeviceAddress, String latitude,  String longitude, String mDeviceName, String maxRssi) {
+        this.projecto_id=idprojecto;
+        this.mDeviceAddress = mDeviceAddress;
+        this.mDeviceName=mDeviceName;
+        this.latitude=latitude;
+        this.longitude=longitude;
+        this.mdate = String.valueOf(System.currentTimeMillis());
+        this.maxRSSI= maxRssi;
+    }
+
     public Device(int idprojecto, String mDeviceAddress, String latitude, String longitude) {
+        this.projecto_id=idprojecto;
         this.mDeviceAddress = mDeviceAddress;
         this.mDeviceName="Anonymous";
         this.latitude=latitude;
         this.longitude=longitude;
         this.mdate = String.valueOf(System.currentTimeMillis());
     }
+
     public Device(int idprojecto, String mDeviceAddress, String latitude, String longitude,String mDeviceName) {
+        this.projecto_id=idprojecto;
         this.mDeviceAddress = mDeviceAddress;
         this.mDeviceName=mDeviceName;
         this.latitude=latitude;
@@ -60,6 +76,16 @@ public class Device implements Serializable {
     }
 
     /**GETTER-SETTER*/
+
+
+    public String getMaxRSSI() {
+        return maxRSSI;
+    }
+
+    public void setMaxRSSI(String maxRSSI) {
+        this.maxRSSI = maxRSSI;
+    }
+
     public int getprojecto_id() {
         return projecto_id;
     }

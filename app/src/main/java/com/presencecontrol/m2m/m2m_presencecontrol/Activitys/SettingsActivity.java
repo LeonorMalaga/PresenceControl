@@ -16,7 +16,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
-
+import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
 import com.presencecontrol.m2m.m2m_presencecontrol.R;
 
 import java.util.List;
@@ -80,8 +80,8 @@ public class SettingsActivity extends PreferenceActivity {
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
         // their values. When their values change, their summaries are updated
         // to reflect the new value, per the Android Design guidelines.
-        bindPreferenceSummaryToValue(findPreference("getUrl"));
-        bindPreferenceSummaryToValue(findPreference("postHeader"));
+        bindPreferenceSummaryToValue(findPreference(DMConstants.URLGET));
+        bindPreferenceSummaryToValue(findPreference(DMConstants.URLPOSTHEADER));
 //        bindPreferenceSummaryToValue(findPreference("example_list"));
 //        bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
 //        bindPreferenceSummaryToValue(findPreference("sync_frequency"));
@@ -213,10 +213,10 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("work_mode_list"));
-            bindPreferenceSummaryToValue(findPreference("work_save_list"));
-            bindPreferenceSummaryToValue(findPreference("getUrl"));
-            bindPreferenceSummaryToValue(findPreference("postHeader"));
+            bindPreferenceSummaryToValue(findPreference(DMConstants.WORKMODE));
+            bindPreferenceSummaryToValue(findPreference(DMConstants.SAVEMODE));
+            bindPreferenceSummaryToValue(findPreference(DMConstants.URLGET));
+            bindPreferenceSummaryToValue(findPreference(DMConstants.URLPOSTHEADER));
 
         }
     }

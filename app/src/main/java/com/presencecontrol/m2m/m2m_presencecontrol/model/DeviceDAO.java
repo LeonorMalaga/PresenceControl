@@ -23,6 +23,7 @@ public class DeviceDAO {
             MySQLiteHelper.COLUMN_DEVICE_ADDRESS,
             MySQLiteHelper.COLUMN_DEVICE_NAME,
             MySQLiteHelper.COLUMN_DEVICE_ESPECIFICATION,
+            MySQLiteHelper.COLUMN_MAX_RSSI,
             MySQLiteHelper.COLUMN_LATITUDE,
             MySQLiteHelper.COLUMN_LONGITUDE
     };
@@ -35,8 +36,9 @@ public class DeviceDAO {
         device.setmDeviceAddress(cursor.getString(3));
         device.setmDeviceName(cursor.getString(4));
         device.setDeviceSpecification(cursor.getString(5));
-        device.setLatitude(cursor.getString(6));
-        device.setLongitude(cursor.getString(7));
+        device.setMaxRSSI(cursor.getString(6));
+        device.setLatitude(cursor.getString(7));
+        device.setLongitude(cursor.getString(8));
         return device;
     }
 
@@ -63,15 +65,17 @@ public class DeviceDAO {
     }
 
     public int create(Device device) {
+        int insertId=-1;
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_PROJECT_ID, device.getprojecto_id());
         values.put(MySQLiteHelper.COLUMN_DATE, device.getDate());
         values.put(MySQLiteHelper.COLUMN_DEVICE_ADDRESS, device.getmDeviceAddress());
         values.put(MySQLiteHelper.COLUMN_DEVICE_NAME, device.getmDeviceName());
         values.put(MySQLiteHelper.COLUMN_DEVICE_ESPECIFICATION, device.getDeviceSpecification());
+        values.put(MySQLiteHelper.COLUMN_MAX_RSSI, device.getMaxRSSI());
         values.put(MySQLiteHelper.COLUMN_LATITUDE, device.getLatitude());
         values.put(MySQLiteHelper.COLUMN_LONGITUDE, device.getLongitude());
-        int insertId = (int) database.insert(MySQLiteHelper.TABLE_DEVICES, null, values);
+        insertId = (int) database.insert(MySQLiteHelper.TABLE_DEVICES, null, values);
         return insertId;
     }
 
@@ -83,6 +87,7 @@ public class DeviceDAO {
         values.put(MySQLiteHelper.COLUMN_DEVICE_ADDRESS, device.getmDeviceAddress());
         values.put(MySQLiteHelper.COLUMN_DEVICE_NAME, device.getmDeviceName());
         values.put(MySQLiteHelper.COLUMN_DEVICE_ESPECIFICATION, device.getDeviceSpecification());
+        values.put(MySQLiteHelper.COLUMN_MAX_RSSI, device.getMaxRSSI());
         values.put(MySQLiteHelper.COLUMN_LATITUDE, device.getLatitude());
         values.put(MySQLiteHelper.COLUMN_LONGITUDE, device.getLongitude());
         database.update(MySQLiteHelper.TABLE_DEVICES, values, filter, null);

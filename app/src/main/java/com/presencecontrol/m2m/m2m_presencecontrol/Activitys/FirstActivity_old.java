@@ -20,7 +20,6 @@ import com.presencecontrol.m2m.m2m_presencecontrol.R;
 import java.util.ArrayList;
 //Internal import
 import com.presencecontrol.m2m.m2m_presencecontrol.model.Device;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.SettingsModel;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.Payload;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.AuxTableScreme;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.DataBaseManager;
@@ -63,11 +62,9 @@ public class FirstActivity_old extends Activity {
                      */
                     mSQLite.makeTable(Payload.class);
                     String aux1= mSQLite.showTables(Payload.class);
-                    mSQLite.makeTable(SettingsModel.class);
-                    String aux2= mSQLite.showTables(SettingsModel.class);
-                    mSQLite.makeTable(Device.class);
+                     mSQLite.makeTable(Device.class);
                     String aux3= mSQLite.showTables(Device.class);
-                    String result=aux1+aux2+aux3;
+                    String result=aux1+aux3;
 
                     PreferenceManager.getDefaultSharedPreferences(FirstActivity_old.this)
                             .edit()
