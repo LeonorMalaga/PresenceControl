@@ -58,8 +58,8 @@
         <Button
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Guardar"
-            android:id="@+id/guardar_button"
+            android:text="@string/save_button"
+            android:id="@+id/save_button"
             android:layout_gravity="center_horizontal" />
 
         <TextView

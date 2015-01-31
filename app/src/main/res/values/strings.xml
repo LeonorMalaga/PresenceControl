@@ -22,14 +22,17 @@
     <string name="button_Build">Build</string>
     <string name="Build_result">Not Building</string>
     <!--activity_first -->
-    <string name="button_Start">Start with default values</string>
-    <string name="start_text">It´s the first time you open this app. You should change the setting:
-                              \nWork Mode:
-                              \n 1-work like a installer(detect beacon and save associate text).(default)
-                               \n 2-o like a user(hear the associate text from a beacon wen you are near).
-                               \n Also you can configure ,the storage mode:
-                               \n Local(default) or by external server.
-                               \n If we select external server, we have to set the url to send data(by http post method) and receive data(by http get method)</string>
+    <string name="button_Start">Start</string>
+    <string name="start_text">It´s the first time you open this app. You should change the SETTINGS:
+                              \n
+                              \nWork mode:
+                              \n  1-Work like a INSTALLER(detect beacon and save associate text).(default)
+                               \n  2-o like a USER(hear the associate text from a beacon wen you are near).
+                               \n
+                               \nStorage mode:
+                               \n  1-LOCAL(default)
+                               \n  2-or by external SERVER.
+                               \nIf we select external server, we have to set the URL to send data(by http post method) and receive data(by http get method)</string>
     <!--activity_first_installer-->
     <string name="start_text_installer">It´s the first time you use this app like installer.
                                        \nYou should define the project where the beacons will be associate.</string>
@@ -44,6 +47,11 @@
     <string name="new_project_button">New project</string>
     <string name="find_ibeacon_button">Find i-beacon</string>
     <string name="white_line">                                                                                        </string>
-    <string name="search_i_beacon_textView">Place the phone on i_beacon, click Search and select the i_beacon with the highest signal level</string>
+    <string name="search_i_beacon_textView">Place the phone on i_beacon, click Scan, wait 5 seconds and select the i_beacon with the highest signal level. The latitude and longitude, also go to be put away</string>
+    <string name="save_button">SAVE</string>
+    <string name="device_specification">I_BEACON SPECIFICATION:</string>
+    <string name="device_specification_description">Write the text to show to the users</string>
+    <string name="default_device_specification">Elevator</string>
+    <string name="data_validation">Data Validation:</string>
 
 </resources>

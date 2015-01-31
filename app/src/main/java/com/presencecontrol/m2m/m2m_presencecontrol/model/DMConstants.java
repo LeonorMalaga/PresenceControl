@@ -10,7 +10,6 @@ public class DMConstants {
     public static final String FIRST="com.m2m.ericsson.controller.activity.FIRST";
     public static final String FIRSTINSTALLER="com.m2m.ericsson.controller.activity.FIRSTINSTALLER";
     //---------------------------SETTINGS---------------------------------------//
-
     public static final String URLPOSTHEADER="postHeader";
     public static final String URLGET="getUrl";
     public static final String WORKMODE="work_mode_list";
@@ -25,6 +24,6 @@ public class DMConstants {
     /*Defines the key for the status "extra" in DMGETPOSTIntenService Intent*/
     public static final String INTENTSERVICE_EXTRA =
             "com.presencecontrol.m2m.m2m_presencecontrol.extra.INTENTSERVICE_EXTRA";
-
-//---------------------------------FIN-Constans for DMGETPOSTIntentService-----------------------------------//
+//---------------------------------Constans For InstallerMode---------------------------------------------//
+public static final String SPINNER_NAME="com.m2m.ericsson.controller.activity.SPINNER_INDEX";
 }

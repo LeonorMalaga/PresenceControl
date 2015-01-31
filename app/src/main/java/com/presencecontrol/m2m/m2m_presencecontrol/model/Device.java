@@ -74,6 +74,24 @@ public class Device implements Serializable {
         this.longitude=longitude;
         this.mdate = String.valueOf(System.currentTimeMillis());
     }
+    public Device(String mDeviceAddress, String latitude, String longitude,String mDeviceName, String mDeviceSpecification) {
+        this.mDeviceAddress = mDeviceAddress;
+        this.mDeviceName=mDeviceName;
+        this.latitude=latitude;
+        this.longitude=longitude;
+        this.mDeviceSpecification = mDeviceSpecification;
+        this.mdate = String.valueOf(System.currentTimeMillis());
+    }
+    public Device(int idprojecto,String mDeviceAddress, String latitude, String longitude,String mDeviceName, String mDeviceSpecification, String maxRssi) {
+        this.projecto_id=idprojecto;
+        this.mDeviceAddress = mDeviceAddress;
+        this.mDeviceName=mDeviceName;
+        this.latitude=latitude;
+        this.longitude=longitude;
+        this.mDeviceSpecification = mDeviceSpecification;
+        this.mdate = String.valueOf(System.currentTimeMillis());
+        this.maxRSSI= maxRssi;
+    }
 
     /**GETTER-SETTER*/
 
@@ -118,14 +136,7 @@ public class Device implements Serializable {
         this.longitude = longitude;
     }
 
-    public Device(String mDeviceAddress, String latitude, String longitude,String mDeviceName, String mDeviceSpecification) {
-        this.mDeviceAddress = mDeviceAddress;
-        this.mDeviceName=mDeviceName;
-        this.latitude=latitude;
-        this.longitude=longitude;
-        this.mDeviceSpecification = mDeviceSpecification;
-        this.mdate = String.valueOf(System.currentTimeMillis());
-    }
+
     /**
      * Metod
      * /

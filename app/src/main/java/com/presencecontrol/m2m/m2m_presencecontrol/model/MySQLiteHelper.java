@@ -76,29 +76,30 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_PROJECT_ID + " integer not null, "
             + COLUMN_DATE+ " text, "
-            + COLUMN_DEVICE_ADDRESS+ " text not null unique, "
+            + COLUMN_DEVICE_ADDRESS+ " text not null, "
             + COLUMN_DEVICE_NAME + " text, "
             + COLUMN_DEVICE_ESPECIFICATION + " text, "
             + COLUMN_MAX_RSSI+ " text, "
             + COLUMN_LATITUDE+ " text, "
-            + COLUMN_LONGITUDE+ " text); "
+            + COLUMN_LONGITUDE+ " text, "
+            + " CONSTRAINT uc_PersonID UNIQUE ("+COLUMN_PROJECT_ID+","+COLUMN_DEVICE_ADDRESS+") );"
             ;
 
-    private static final String DATABASE_CREATE_PROJECTS = "create table if not exists "
-            + TABLE_PROJECTS + " ( "
-            + COLUMN_ID + " integer primary key autoincrement, "
-            + COLUMN_DATE+ " text not null, "
-            + COLUMN_PROJECT_NAME+ " text not null, "
-            + COLUMN_PROJECT_SPECIFICATION + " text); "
-            ;
-//Unique give problem
 //    private static final String DATABASE_CREATE_PROJECTS = "create table if not exists "
 //            + TABLE_PROJECTS + " ( "
 //            + COLUMN_ID + " integer primary key autoincrement, "
 //            + COLUMN_DATE+ " text not null, "
-//            + COLUMN_PROJECT_NAME+ " text not null unique, "
+//            + COLUMN_PROJECT_NAME+ " text not null, "
 //            + COLUMN_PROJECT_SPECIFICATION + " text); "
-//            ;
+            ;
+//Unique give problem
+    private static final String DATABASE_CREATE_PROJECTS = "create table if not exists "
+            + TABLE_PROJECTS + " ( "
+            + COLUMN_ID + " integer primary key autoincrement, "
+            + COLUMN_DATE+ " text not null, "
+            + COLUMN_PROJECT_NAME+ " text not null unique, "
+            + COLUMN_PROJECT_SPECIFICATION + " text); "
+            ;
 //    /*
 //    * relational tables
 //    */

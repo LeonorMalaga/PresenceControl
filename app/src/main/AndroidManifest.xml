@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <use-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -22,7 +21,11 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Activitys.FirstInstallerActivity"
+            android:name=".Activitys.NewProject_Activity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.presencecontrol.m2m.m2m_presencecontrol.Activitys.Installer_Activity"
             android:label="@string/app_name" >
         </activity>
         <activity
