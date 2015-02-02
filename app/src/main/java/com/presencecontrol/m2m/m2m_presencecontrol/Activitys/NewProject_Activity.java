@@ -15,8 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.presencecontrol.m2m.m2m_presencecontrol.R;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.MySQLiteHelper;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
+import com.presencecontrol.m2m.m2m_presencecontrol.model.Constants;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.Project;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.ProjectDAO;
 
@@ -46,11 +45,10 @@ private TextView menssage;
             setContentView(R.layout.create_project);
             menssage=(TextView)this.findViewById(R.id.message_textView);
             //showUserSettings();
-            firstInstaller= PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(DMConstants.FIRSTINSTALLER,0);
+            firstInstaller= PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt(Constants.FIRSTINSTALLER,0);
             if(firstInstaller==278456289){
                 menssage.setVisibility(View.INVISIBLE); //Itś not the first time,
-
-            }
+               }
                 saveButton=(Button)this.findViewById(R.id.first_installer_button);
                 projectName=(EditText)this.findViewById(R.id.project_name_editText);
                 projectSpecification=(EditText)this.findViewById(R.id.project_specification_editText);
@@ -80,11 +78,11 @@ private TextView menssage;
 
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
                         .edit()
-                        .putInt(DMConstants.FIRSTINSTALLER,278456289)
+                        .putInt(Constants.FIRSTINSTALLER,278456289)
                         .commit();
 
-
         }
+
         @Override
         public boolean onCreateOptionsMenu(Menu menu){
 

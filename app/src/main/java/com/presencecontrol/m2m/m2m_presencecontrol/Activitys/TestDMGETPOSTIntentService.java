@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 
-import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
+import com.presencecontrol.m2m.m2m_presencecontrol.model.Constants;
 import com.presencecontrol.m2m.m2m_presencecontrol.comunication.DMGETPOSTIntentService;
 import com.presencecontrol.m2m.m2m_presencecontrol.R;
 
@@ -39,7 +39,7 @@ public class TestDMGETPOSTIntentService extends Activity {
            // mServiceGETPOST.startActionGET(this,url);
            String url="http://192.168.1.103:8080/post/tight-custody/?paiload=1234";
            mServiceGETPOST.startActionPOSTHEADER(this,url);
-           IntentFilter mIntentFilterPostHeader = new IntentFilter(DMConstants.INTENTSERVICE_BROADCAST_POSTHEADER);
+           IntentFilter mIntentFilterPostHeader = new IntentFilter(Constants.INTENTSERVICE_BROADCAST_POSTHEADER);
            ResponseReceiver mResponseReceiver=new ResponseReceiver();
            LocalBroadcastManager.getInstance(this).registerReceiver(
                    mResponseReceiver,
@@ -61,7 +61,7 @@ public class TestDMGETPOSTIntentService extends Activity {
         // Called when the BroadcastReceiver gets an Intent it's registered to receive
         @Override
         public void onReceive(Context context, Intent intent) {
-            response=intent.getExtras().getString(DMConstants.INTENTSERVICE_EXTRA);
+            response=intent.getExtras().getString(Constants.INTENTSERVICE_EXTRA);
 
             for (String str: intent.getExtras().keySet())
                 Log.d("-----key-----: ", str);

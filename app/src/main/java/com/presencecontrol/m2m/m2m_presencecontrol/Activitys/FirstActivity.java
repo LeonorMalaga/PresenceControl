@@ -13,7 +13,7 @@ import android.widget.Button;
 
 import com.presencecontrol.m2m.m2m_presencecontrol.R;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.MySQLiteHelper;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
+import com.presencecontrol.m2m.m2m_presencecontrol.model.Constants;
 
 /**
  * Created by leonor martinez mesas on 21/01/15.
@@ -30,31 +30,37 @@ public class FirstActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         //showUserSettings();
-        first= PreferenceManager.getDefaultSharedPreferences(FirstActivity.this).getInt(DMConstants.FIRST,0);
+        first= PreferenceManager.getDefaultSharedPreferences(FirstActivity.this).getInt(Constants.FIRST,0);
         Log.d("--------------FIRST----------: ", String.valueOf(first));
         if(first==168451239){
             //Itś not the first time, look the work mode and jump to the correct activity
             SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            workMode=sharedPrefs.getString(DMConstants.WORKMODE, "NULL");
-            Log.d("------------NOT FIRST--WOORK MODE----------: ",workMode);
-            startActivity(new Intent(getApplicationContext(),Installer_Activity.class));
+            workMode=sharedPrefs.getString(Constants.WORKMODE, "1");
+            Log.d("------------NOT FIRST--WOORK MODE----------: "+(workMode.equals("0")),workMode);
+            if(workMode.equals("0")){
+            startActivity(new Intent(getApplicationContext(),User_Activity.class));
+            }else{
+            startActivity(new Intent(getApplicationContext(),Installer_Activity.class));}
 
         }else{
             SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            workMode=sharedPrefs.getString(DMConstants.WORKMODE, "NULL");
+            workMode=sharedPrefs.getString(Constants.WORKMODE, "1");
             Log.d("-------------FIRST-WOORK MODE----------: ",workMode);
             Database=new MySQLiteHelper(getApplicationContext());
             startDefaultButton=(Button)this.findViewById(R.id.startDefault_button);
             startDefaultButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick (View view){
-                  startActivity(new Intent(getApplicationContext(), NewProject_Activity.class));
+                    if(workMode.equals("0")){
+                        startActivity(new Intent(getApplicationContext(),User_Activity.class));
+                    }else{
+                        startActivity(new Intent(getApplicationContext(),Installer_Activity.class));}
                 }
             });
 
             PreferenceManager.getDefaultSharedPreferences(FirstActivity.this)
                     .edit()
-                    .putInt(DMConstants.FIRST,168451239)
+                    .putInt(Constants.FIRST,168451239)
                     .commit();
         }
 

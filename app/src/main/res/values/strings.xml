@@ -53,5 +53,12 @@
     <string name="device_specification_description">Write the text to show to the users</string>
     <string name="default_device_specification">Elevator</string>
     <string name="data_validation">Data Validation:</string>
-
+    <!--activity-and-service-for-user-->
+    <string name="user_first_textView">Press the button to start ,the service detection of I_beacons.</string>
+    <string name="can_detect_Ibeacon">I-BEACON DETECTION SERVICE INITIATED IN BACKGROUND.</string>
+    <string name="service_stopped"> SERVICE STOPPED </string>
+    <string name="user_second_textView">You can exit to the app. You will be notified of the presence of registered i-beacons, near of you.</string>
+    <string name="can_not_detect_Ibeacon"> NOW YOU CAN NOT DETECT I-BEACONS </string>
+    <string name="stop_service"> STOP SERVICE </string>
+    <string name="start_service"> START SERVICE</string>
 </resources>

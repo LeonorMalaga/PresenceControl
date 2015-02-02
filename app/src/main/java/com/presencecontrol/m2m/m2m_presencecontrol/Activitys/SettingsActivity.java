@@ -3,20 +3,15 @@ package com.presencecontrol.m2m.m2m_presencecontrol.Activitys;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
-import android.text.TextUtils;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
+
+import com.presencecontrol.m2m.m2m_presencecontrol.model.Constants;
 import com.presencecontrol.m2m.m2m_presencecontrol.R;
 
 import java.util.List;
@@ -80,8 +75,8 @@ public class SettingsActivity extends PreferenceActivity {
         // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
         // their values. When their values change, their summaries are updated
         // to reflect the new value, per the Android Design guidelines.
-        bindPreferenceSummaryToValue(findPreference(DMConstants.URLGET));
-        bindPreferenceSummaryToValue(findPreference(DMConstants.URLPOSTHEADER));
+        bindPreferenceSummaryToValue(findPreference(Constants.URLGET));
+        bindPreferenceSummaryToValue(findPreference(Constants.URLPOSTHEADER));
 //        bindPreferenceSummaryToValue(findPreference("example_list"));
 //        bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
 //        bindPreferenceSummaryToValue(findPreference("sync_frequency"));
@@ -213,10 +208,10 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference(DMConstants.WORKMODE));
-            bindPreferenceSummaryToValue(findPreference(DMConstants.SAVEMODE));
-            bindPreferenceSummaryToValue(findPreference(DMConstants.URLGET));
-            bindPreferenceSummaryToValue(findPreference(DMConstants.URLPOSTHEADER));
+            bindPreferenceSummaryToValue(findPreference(Constants.WORKMODE));
+            bindPreferenceSummaryToValue(findPreference(Constants.SAVEMODE));
+            bindPreferenceSummaryToValue(findPreference(Constants.URLGET));
+            bindPreferenceSummaryToValue(findPreference(Constants.URLPOSTHEADER));
 
         }
     }

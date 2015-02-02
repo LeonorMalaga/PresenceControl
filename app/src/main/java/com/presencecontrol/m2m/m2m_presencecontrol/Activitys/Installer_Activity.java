@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -29,7 +30,7 @@ import com.presencecontrol.m2m.m2m_presencecontrol.model.DeviceDAO;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.Project;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.ProjectDAO;
 import com.presencecontrol.m2m.m2m_presencecontrol.model.MySQLiteHelper;
-import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
+import com.presencecontrol.m2m.m2m_presencecontrol.model.Constants;
 import com.presencecontrol.m2m.m2m_presencecontrol.phoneSensor.GPSTracker;
 
 import java.util.ArrayList;
@@ -73,6 +74,7 @@ public class Installer_Activity  extends ActionBarActivity implements AdapterVie
     private String name;
     private String rssi;
     private String specifications_text;
+    private String workMode;
     static class ViewHolder {
         public TextView text;
     }
@@ -97,9 +99,15 @@ public class Installer_Activity  extends ActionBarActivity implements AdapterVie
     //---------------------Principal Methods---------------//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_installer);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_installer);
 
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        workMode=sharedPrefs.getString(Constants.WORKMODE, "1");
+        Log.d("------------NOT FIRST--WOORK MODE----------: "+workMode.equals("0"),workMode);
+        if(workMode.equals("0")){
+            startActivity(new Intent(getApplicationContext(),User_Activity.class));
+        }else{
     specifications=(EditText)this.findViewById(R.id.device_specification_editText);
     data_validation=(TextView)this.findViewById(R.id.intaller_response_textView);
     data_validation.setVisibility(View.INVISIBLE);
@@ -119,7 +127,7 @@ public class Installer_Activity  extends ActionBarActivity implements AdapterVie
     projectList=projectDAO.getAll();
     projectDAO.close();
         // Create an ArrayAdapter using the string array and a default spinner layout
-        project_name= PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(DMConstants.SPINNER_NAME,"Anonymous27");
+        project_name= PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(Constants.SPINNER_NAME,"Anonymous27");
         arrayListaux=new ArrayList();
         int size=projectList.size();
         if(size<0){  startActivity(new Intent(getApplicationContext(), NewProject_Activity.class));};
@@ -175,7 +183,7 @@ public class Installer_Activity  extends ActionBarActivity implements AdapterVie
                 specifications_text=specifications.getText().toString();
                 projectDAO=new ProjectDAO(getApplicationContext());
                 projectDAO.open();
-                project_name= PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(DMConstants.SPINNER_NAME,"Anonymous27");
+                project_name= PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(Constants.SPINNER_NAME,"Anonymous27");
                 projectaux=projectDAO.getProjectByName(project_name);
                 projectDAO.close();
                 deviceaux=new Device(projectaux.get_id(), address, mlatitude, mlongitude,name,specifications_text,rssi);
@@ -194,7 +202,7 @@ public class Installer_Activity  extends ActionBarActivity implements AdapterVie
             }//onItemClick
         });
 
-        }
+        }}
 
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
@@ -203,7 +211,7 @@ public class Installer_Activity  extends ActionBarActivity implements AdapterVie
         Log.d("-------Spinner select------->",name);
         PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
                 .edit()
-                .putString(DMConstants.SPINNER_NAME,name)
+                .putString(Constants.SPINNER_NAME,name)
                 .commit();
     }
 

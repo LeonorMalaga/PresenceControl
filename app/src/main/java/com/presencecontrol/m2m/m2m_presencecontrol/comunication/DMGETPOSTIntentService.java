@@ -6,7 +6,7 @@ import android.content.Context;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.presencecontrol.m2m.m2m_presencecontrol.model.DMConstants;
+import com.presencecontrol.m2m.m2m_presencecontrol.model.Constants;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -119,9 +119,9 @@ public class DMGETPOSTIntentService extends IntentService {
      * GETINTENTSERVICE_BROADCAST is a custom Intent action
      * with the response of the get petition
      */
-            Intent localIntent =new Intent(DMConstants.INTENTSERVICE_BROADCAST_GET)
+            Intent localIntent =new Intent(Constants.INTENTSERVICE_BROADCAST_GET)
                             // Puts the status into the Intent
-                      .putExtra(DMConstants.INTENTSERVICE_EXTRA, getResponse);
+                      .putExtra(Constants.INTENTSERVICE_EXTRA, getResponse);
             // Broadcasts the Intent to receivers in this app.
             LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
 
@@ -159,9 +159,9 @@ public class DMGETPOSTIntentService extends IntentService {
      * POSTHEADERINTENTSERVICE_BROADCAST is a custom Intent action
      * with the response of the post petition
      */
-            Intent localIntent =new Intent(DMConstants.INTENTSERVICE_BROADCAST_POSTHEADER)
+            Intent localIntent =new Intent(Constants.INTENTSERVICE_BROADCAST_POSTHEADER)
             // Puts the status into the Intent
-                   .putExtra(DMConstants.INTENTSERVICE_EXTRA,  postResponse);
+                   .putExtra(Constants.INTENTSERVICE_EXTRA,  postResponse);
             // Broadcasts the Intent to receivers in this app.
             LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
         } catch (MalformedURLException e) {

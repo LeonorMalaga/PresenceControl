@@ -5,7 +5,7 @@ package com.presencecontrol.m2m.m2m_presencecontrol.model;
 /**
  * Created by root on 16/01/15.
  */
-public class DMConstants {
+public class Constants {
     //----------------------- KNOW FIRST TIME -------------------------------------//
     public static final String FIRST="com.m2m.ericsson.controller.activity.FIRST";
     public static final String FIRSTINSTALLER="com.m2m.ericsson.controller.activity.FIRSTINSTALLER";
@@ -26,4 +26,8 @@ public class DMConstants {
             "com.presencecontrol.m2m.m2m_presencecontrol.extra.INTENTSERVICE_EXTRA";
 //---------------------------------Constans For InstallerMode---------------------------------------------//
 public static final String SPINNER_NAME="com.m2m.ericsson.controller.activity.SPINNER_INDEX";
+//---------------------------------Constans For UserMode---------------------------------------------//
+public static final String SERVICE_STATE="com.m2m.ericsson.controller.activity.SERVICE_STATE";
+public static final String DEVICE_ADDRESS="com.m2m.ericsson.controller.activity.DEVICE_ADDRESS";
+public static final String DEVICE_RSSI="com.m2m.ericsson.controller.activity.DEVICE_RSSI";
 }
